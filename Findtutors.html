@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>ScholarLink</title>
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet" />
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">ScholarLink  <img src="assets/img/Logolite.png" width="30" height="30" alt="">      <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button></a>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="#">Activity Log</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="login.html">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="Dashboard.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Tutors</div>
+                            <a class="nav-link" href="Findtutors.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Tutor Database
+                            </a>
+                            <a class="nav-link" href="Mytutors.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                My tutors
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Students</div>
+                            <a class="nav-link" href="Findstudents.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Student Database
+                            </a>
+                            <a class="nav-link" href="Mystudents.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                My students
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Other</div>
+                            <a class="nav-link" href="/aboutus.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                About Us
+                            </a>
+                            <a class="nav-link" href="sitesettings.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Profile Settings
+                            </a>
+                            <a id="logout" class="nav-link" href="signin.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Log Out
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Start Bootstrap
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Discover Tutoring!</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Find a tutor</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                                Join our tutor database and wait for a student to contact you!
+                            </div>
+                            <div class="card-body">
+                                <form id="contactForm">
+                                    <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                        <label for="name1">Name</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Name">
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Email">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="description">Description</label>
+                                      <input type="text" class="form-control" id="description" placeholder="Write a few words about yourself!">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="subject">Subject</label>
+                                            <select id="subject" class="form-control">
+                                              <option selected>Choose...</option>
+                                              <option>Mathematics</option>
+                                              <option>French</option>
+                                              <option>Chemistry</option>
+                                              <option>Physics</option>
+                                              <option>Biology</option>
+                                              <option>English</option>
+                                              <option>Computor Science</option>
+                                            </select>
+                                        </div>
+                                      <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                          <label for="city">City</label>
+                                          <input type="text" class="form-control" id="city">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                          <label for="province">Province</label>
+                                          <select id="province" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <option>Ontario</option>
+                                            <option>British Columbia</option>
+                                            <option>Quebec</option>
+                                            <option>Alberta</option>
+                                            <option>Manitoba</option>
+                                          </select>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="grade">Grade</label>
+                                            <select id="grade" class="form-control">
+                                              <option selected>Choose</option>
+                                              <option>Below grade 8</option>
+                                              <option>Grade 8</option>
+                                              <option>Grade 9</option>
+                                              <option>Grade 10</option>
+                                              <option>Grade 11</option>
+                                              <option>Grade 12</option>
+                                              <option>Above grade 12</option>
+                                            </select>
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Submit your information</button>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                                Our database of tutors
+                            </div>
+                            <br>
+                            <div class="row filterdiv">
+                                <div class="form-group col-md-3">
+                                    <select id="grade" class="form-control" onchange="sortgrade()">
+                                      <option selected>Filter by Grade</option>
+                                      <option>Below grade 8</option>
+                                      <option>Grade 8</option>
+                                      <option>Grade 9</option>
+                                      <option>Grade 10</option>
+                                      <option>Grade 11</option>
+                                      <option>Grade 12</option>
+                                      <option>Above grade 12</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <select id="province" class="form-control" onchange="sortprovince()">
+                                      <option selected>Filter by Province</option>
+                                      <option>Ontario</option>
+                                      <option>British Columbia</option>
+                                      <option>Quebec</option>
+                                      <option>Alberta</option>
+                                      <option>Manitoba</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <select id="subject" class="form-control" onchange="sortsubject()">
+                                      <option selected>Filter by Subject</option>
+                                      <option>Mathematics</option>
+                                      <option>French</option>
+                                      <option>Chemistry</option>
+                                      <option>Physics</option>
+                                      <option>Biology</option>
+                                      <option>English</option>
+                                      <option>Computor Science</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Email</th>
+                                                <th>Province</th>
+                                                <th>Subject</th>
+                                                <th>Grade</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tutorformbody">
+
+                                            <tr>
+                                                <td>John Doe</td>
+                                                <td>Hi I'm John</td>
+                                                <td>john.doe@gmail.com</td>
+                                                <td>Victoria, British Columbia</td>
+                                                <td>Science</td>
+                                                <td>Grade 9</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; ScholarLink 2020</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="p5.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="tutorinfo.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/datatables-demo.js"></script>
+    </body>
+</html>
